@@ -40,10 +40,9 @@ unzip(zipfile = paste(directory, "/getdata_projectfiles_UCI HAR Dataset.zip", se
   ##Create a vector with all the columns names
     columns <- colnames(alldatasets)
   ##Create a boolean that checks if the column name is valid (activity, subject, mean, std)
-    validcolumns <- (grepl("Activity", columns) | grepl("SubjectId", columns) |grepl("std", columns) | grepl("mean", columns))
+    validcolumns <- (grepl("Activity", columns) | grepl("SubjectId", columns) |grepl("std", columns) | grepl("mean()", columns, fixed=TRUE))
   ##Extract the valid columns only
     alldtmeanstd <- alldatasets[ , validcolumns == TRUE]
-#rm(alldatasets)
 
 #3. Use descriptive names for the activities
   dtnames <- merge(activity_labels, alldtmeanstd, by="ActivityId", all.x = TRUE)
